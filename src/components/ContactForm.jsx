@@ -15,26 +15,42 @@ const ContactForm = () => {
     const onSubmit = async (data) => {
         setIsSubmitting(true);
         try {
-            // Initialize EmailJS - replace with your actual credentials
+            // Send confirmation email to user
             await emailjs.send(
-                "YOUR_SERVICE_ID",
-                "YOUR_TEMPLATE_ID",
+                "contact_us-form",
+                "user-confirmation", 
+                {
+                    to_email: data.email,
+                    from_name: data.fullName,
+                    user_email: data.email,
+                    phone_number: data.phone,
+                    message: data.message,
+                    submission_date: new Date().toLocaleString(),
+                    company_logo: "https://res.cloudinary.com/drc6omjqc/image/upload/v1732225335/logo2_phf0n5.png", // Add your logo URL
+                },
+                "3Mm_nXmdn_ubECxQw" 
+            );
+
+            // Send notification email to business
+            await emailjs.send(
+                "contact_us-form",
+                "business-notification", 
                 {
                     from_name: data.fullName,
                     from_email: data.email,
+                    phone_number: data.phone,
                     message: data.message,
-                    phone: data.phone,
                     to_email: "edtaa001@gmail.com",
-                    cc_email: data.email,
+                    submission_date: new Date().toLocaleString(),
                 },
-                "YOUR_PUBLIC_KEY"
+                "3Mm_nXmdn_ubECxQw" 
             );
 
             setSubmitStatus("success");
             reset();
         } catch (error) {
-            setSubmitStatus("error");
             console.error("Failed to send email:", error);
+            setSubmitStatus("error");
         } finally {
             setIsSubmitting(false);
         }
@@ -161,4 +177,5 @@ const ContactForm = () => {
         </form>
     );
 };
+
 export default ContactForm;
