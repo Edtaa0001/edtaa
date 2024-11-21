@@ -1,94 +1,141 @@
-import React from 'react'
-import footerlogo from '../assets/footerlogo.png'
-import headset from '../assets/headset.png'
-import email from '../assets/email.png'
-import chat from '../assets/chat.png'
-import envelope from '../assets/envelope.png'
-import youtube from '../assets/youtube.png'
-import linkedin from '../assets/linkedin.png'
-import facebook from '../assets/facebook.png'
+import React from "react";
+import footerlogo from "../assets/footerlogo.png";
+import headset from "../assets/headset.png";
+import email from "../assets/email.png";
+import chat from "../assets/chat.png";
+import envelope from "../assets/envelope.png";
+import youtube from "../assets/youtube.png";
+import linkedin from "../assets/linkedin.png";
+import facebook from "../assets/facebook.png";
+
+const FooterColumn = ({ title, links, className }) => (
+    <div className={className}>
+        <h3 className="text-xl font-semibold text-gray-800 mb-6">{title}</h3>
+        <ul className="space-y-3">
+            {links.map((link, index) => (
+                <li key={index}>
+                    <a href="#" className={`text-gray-600 hover:text-gray-900 transition-colors ${link.underline ? "underline" : ""}`}>
+                        {link.text}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+);
 
 const Footer = () => {
-  return (
-    <div className='py-6 px-4 md:px-0'>
+    const quickLinks = [
+        { text: "Trust Center" },
+        { text: "Find a Solution" },
+        { text: "Industries" },
+        { text: "Find a Partner" },
+        { text: "Trials and Demos" },
+        { text: "Find Services" },
+    ];
 
+    const trending = [
+        { text: "IUTO" },
+        { text: "What is GROW with EDTAA?" },
+        { text: "Microsoft Co-Pilot" },
+        { text: "Artificial Intelligence" },
+        { text: "Sustainability" },
+        { text: "Partner Ecosystem" },
+    ];
 
+    const about = [
+        { text: "Company Information" },
+        { text: "Worldwide Directory" },
+        { text: "Investor Relations" },
+        { text: "Careers" },
+        { text: "News and Press" },
+        { text: "Events" },
+        { text: "Customer Stories" },
+        { text: "Newsletters" },
+    ];
 
-        <div className='flex flex-col md:flex-row gap-y-4 md:gap-y-0 justify-center gap-x-24'>
+    const siteInfo = [
+        { text: "Privacy" },
+        { text: "Terms of Use" },
+        { text: "Legal Disclosure" },
+        { text: "Copyright" },
+        { text: "Trademark" },
+        { text: "Sitemap" },
+        { text: "Text View", underline: true },
+        { text: "Cookie Preference", underline: true },
+    ];
 
-        <div>
-<img src={footerlogo} className='object-contain'/>
+    return (
+        <footer className="bg-white py-12 px-4 md:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+                    {/* Company Info Column */}
+                    <div className="lg:col-span-1">
+                        <img src={footerlogo} alt="EDTAA Logo" className="h-12 w-auto object-contain mb-6" />
 
-<div className='flex gap-x-4 mt-5'><img src={headset} className='object-contain mb-[40px]' />
-<div>
-<p>Finland</p>
-<p>+358-40-123-4567</p>
-<p>or see our complete list of <span className='underline'>local country numbers</span></p>
-</div>
+                        {/* Contact Information */}
+                        <div className="space-y-6">
+                            <div className="flex items-start gap-4">
+                                <img src={headset} alt="Support" className="w-6 h-6 object-contain mt-1" />
+                                <div>
+                                    <p className="font-medium text-gray-900">Finland</p>
+                                    <p className="text-gray-600">+358-40-123-4567</p>
+                                    <p className="text-gray-600">
+                                        or see our complete list of{" "}
+                                        <a href="#" className="underline hover:text-gray-900 transition-colors">
+                                            local country numbers
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
 
-</div>
+                            <div className="flex items-center gap-4 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer">
+                                <img src={email} alt="Email" className="w-6 h-6 object-contain" />
+                                <span>Contact Us</span>
+                            </div>
 
-<div className='flex gap-x-4 mt-5'><img src={email} className='object-contain' /><p>Contact Us</p></div>
-<div className='flex gap-x-4 mt-5'><img src={chat} className='object-contain' /><p>Chat Unavailable</p></div>
+                            <div className="flex items-center gap-4 text-gray-600">
+                                <img src={chat} alt="Chat" className="w-6 h-6 object-contain" />
+                                <span>Chat Unavailable</span>
+                            </div>
 
-<div className='flex gap-x-9 mt-16'>
-<img src={facebook} className='object-contain w-2' />
-<img src={youtube} className='object-contain w-4' />
-<img src={linkedin} className='object-contain w-4' />
-<img src={envelope} className='object-contain w-4' />
-</div>
+                            {/* Social Media Links */}
+                            <div className="flex items-center gap-6 pt-4">
+                                <a href="#" className="hover:opacity-80 transition-opacity">
+                                    <img src={facebook} alt="Facebook" className="w-2 h-auto" />
+                                </a>
+                                <a href="#" className="hover:opacity-80 transition-opacity">
+                                    <img src={youtube} alt="YouTube" className="w-4 h-auto" />
+                                </a>
+                                <a href="#" className="hover:opacity-80 transition-opacity">
+                                    <img src={linkedin} alt="LinkedIn" className="w-4 h-auto" />
+                                </a>
+                                <a href="#" className="hover:opacity-80 transition-opacity">
+                                    <img src={envelope} alt="Newsletter" className="w-4 h-auto" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-</div>
+                    {/* Quick Links Column */}
+                    <FooterColumn title="Quick Links" links={quickLinks} className="lg:col-span-1" />
 
-        <div>
-          <p className='text-xl font-semibold'>Quick Links</p>
-          <p className='mt-5'>Trust Center</p>
-          <p className='mt-3'>Find a Solution</p>
-          <p className='mt-3'>Industries</p>
-          <p className='mt-3'>Find a Partner</p>
-          <p className='mt-3'>Trials and Demos</p>
-          <p className='mt-3'>Find Services</p>
-        </div>
+                    {/* Trending Column */}
+                    <FooterColumn title="Trending" links={trending} className="lg:col-span-1" />
 
-        <div>
-          <p className='text-xl font-semibold'>Trending</p>
-          <p className='mt-5'>IUTO</p>
-          <p className='mt-3'>What is GROW with EDTAA?</p>
-          <p className='mt-3'>Microsoft Co-Pilot</p>
-          <p className='mt-3'>Artificial Intelligence</p>
-          <p className='mt-3'>Sustainability</p>
-          <p className='mt-3'>Partner Ecosystem</p>
-        </div>
+                    {/* About EDTAA Column */}
+                    <FooterColumn title="About EDTAA" links={about} className="lg:col-span-1" />
 
-        <div>
-          <p className='text-xl font-semibold'>About EDTAA</p>
-          <p className='mt-5'>Company Information</p>
-          <p className='mt-3'>Worldwide Directory</p>
-          <p className='mt-3'>Investor Relations</p>
-          <p className='mt-3'>Careers</p>
-          <p className='mt-3'>News and Press</p>
-          <p className='mt-3'>Events</p>
-          <p className='mt-3'>Customer Stories</p>
-          <p className='mt-3'>Newsletters</p>
-        </div>
+                    {/* Site Information Column */}
+                    <FooterColumn title="Site Information" links={siteInfo} className="lg:col-span-1" />
+                </div>
 
-        <div>
-          <p className='text-xl font-semibold'>Site Information</p>
-          <p className='mt-5'>Privacy</p>
-          <p className='mt-3'>Terms of Use</p>
-          <p className='mt-3'>Legal Disclosure</p>
-          <p className='mt-3'>Copyright</p>
-          <p className='mt-3'>Trademark</p>
-          <p className='mt-3'>Sitemap</p>
-          <p className='mt-3 underline'>Text View</p>
-          <p className='mt-3 underline'>Cookie Preference</p>
-        </div>
-        
+                {/* Copyright Section - Optional */}
+                <div className="mt-12 pt-8 border-t border-gray-200">
+                    <p className="text-center text-gray-500 text-sm">© {new Date().getFullYear()} EDTAA. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    );
+};
 
-</div>
-
-         </div>
-  )
-}
-
-export default Footer
+export default Footer;
