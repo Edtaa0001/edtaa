@@ -18,9 +18,10 @@ const ContactForm = () => {
             // Send confirmation email to user
             await emailjs.send(
                 "contact_us-form",
-                "user-confirmation", 
+                "user-confirmation",
                 {
                     to_email: data.email,
+                    from_email: "edtaa001@gmail.com",
                     from_name: data.fullName,
                     user_email: data.email,
                     phone_number: data.phone,
@@ -28,7 +29,7 @@ const ContactForm = () => {
                     submission_date: new Date().toLocaleString(),
                     company_logo: "https://res.cloudinary.com/drc6omjqc/image/upload/v1732225335/logo2_phf0n5.png", // Add your logo URL
                 },
-                "3Mm_nXmdn_ubECxQw" 
+                "3Mm_nXmdn_ubECxQw"
             );
 
             // Send notification email to business
