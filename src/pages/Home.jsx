@@ -1,13 +1,13 @@
 
 
 import { useState, useEffect, useRef } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight, MdOutlineArrowRight } from "react-icons/md";
 import { TbPlayerPauseFilled } from "react-icons/tb";
 import { IoArrowBackSharp, IoArrowForwardOutline } from "react-icons/io5";
 import { GoDotFill, GoDot } from "react-icons/go";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Link } from "react-scroll";
 // Import all images
 import gzi from "../assets/gzi.png";
 import recruiters from "../assets/recruiters.png";
@@ -119,9 +119,14 @@ const Home = () => {
                                                 <a href="#" className="hover:text-gray-200 transition-colors">
                                                     Remote Login
                                                 </a>
-                                                <button className="bg-blue-950 hover:bg-blue-900 transition-colors px-4 py-2 rounded-md">
+                                                <Link
+                                                    to="contact-section"
+                                                    smooth={true}
+                                                    duration={500}
+                                                    className="bg-[#191970] hover:bg-[#131358] transition-colors px-6 py-3 rounded-md cursor-pointer"
+                                                >
                                                     Contact Us
-                                                </button>
+                                                </Link>
                                             </div>
                                             <div className="flex gap-x-8 text-sm font-medium">
                                                 <NavItem text="ABOUT US" hasDropdown />
@@ -158,7 +163,7 @@ const Home = () => {
                                             <p className="text-xl md:text-3xl lg:text-4xl text-white font-semibold">{slide.subtitle}</p>
                                         )}
                                         <p className="text-lg md:text-xl text-white/90">{slide.text}</p>
-                                        <button className="bg-blue-950 hover:bg-blue-900 transition-colors rounded-lg flex items-center gap-x-2 text-white px-6 py-3 text-sm md:text-base font-medium">
+                                        <button className="bg-[#191970] hover:bg-[#131358] transition-colors rounded-lg flex items-center gap-x-2 text-white px-6 py-3 text-sm md:text-base font-medium">
                                             {slide.button}
                                             <IoArrowForwardOutline className="w-5 h-5" />
                                         </button>
@@ -222,6 +227,21 @@ const Home = () => {
                                 quote="We've always struggled migrating to the cloud, but EDTAA's Migration team made it most 30-min clarity call only. It's been a game-changer for us all at FusionCore."
                                 showArrows
                             />
+                            <TestimonialCard
+                                role="Head Manager, Skyline Systems"
+                                quote="Automation has never been easier. EDTAA's only IAUTO have made our processes so much smoother and efficient."
+                                showPause
+                            />
+                            <TestimonialCard
+                                role="Department Manager, FusionCore"
+                                quote="We've always struggled migrating to the cloud, but EDTAA's Migration team made it most 30-min clarity call only. It's been a game-changer for us all at FusionCore."
+                                showArrows
+                            />
+                            <TestimonialCard
+                                role="IT Director, TechSphere Solutions"
+                                quote="Before working with EDTAA, our digital processes were disjointed and time-consuming. Their automation solutions completely revolutionized how we operate, saving us countless hours and improving accuracy across the board. EDTAA has become an invaluable partner in our transformation journey!"
+                                showPause
+                            />
                         </div>
                     </div>
                 </section>
@@ -235,7 +255,7 @@ const Home = () => {
                                 <p className="text-lg text-white/90">
                                     To innovate and compete, enterprises must strategically rewire the business for an AI-enabled future.
                                 </p>
-                                <button className="bg-blue-900 hover:bg-blue-800 text-white flex items-center gap-x-2 px-6 py-3 rounded-2xl transition-colors">
+                                <button className="bg-[#191970] hover:bg-[#131358] text-white flex items-center gap-x-2 px-6 py-3 rounded-2xl transition-colors">
                                     Get details <MdOutlineArrowRight className="w-5 h-5" />
                                 </button>
                             </div>
@@ -247,7 +267,7 @@ const Home = () => {
                 </section>
 
                 {/* Contact Section */}
-                <section className="bg-gray-100 py-16 md:py-24">
+                <section id="contact-section" className="bg-gray-100 py-16 md:py-24">
                     <div className="container mx-auto px-6">
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <div className="space-y-6">
@@ -357,17 +377,19 @@ const SliderControls = ({ prevSlide, nextSlide, currentSlide, totalSlides, goToS
         >
             <FaChevronRight className="w-4 h-4" />
         </button> */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-x-2 z-50">
-            {[...Array(totalSlides)].map((_, index) => (
-                <button key={index} onClick={() => goToSlide(index)} className="focus:outline-none">
-                    {index === currentSlide ? (
-                        <GoDotFill className="w-5 h-5 text-white" />
-                    ) : (
-                        <GoDot className="w-5 h-5 text-white opacity-50 hover:opacity-100 transition-opacity" />
-                    )}
-                </button>
-            ))}
-        </div>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-x-3 z-50">
+        {[...Array(totalSlides)].map((_, index) => (
+            <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                        ? "bg-white w-6" 
+                        : "bg-white/50 hover:bg-white/70"
+                }`}
+            />
+        ))}
+    </div>
     </>
 );
 
