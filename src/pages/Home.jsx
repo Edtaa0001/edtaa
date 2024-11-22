@@ -192,7 +192,7 @@ const Home = () => {
                                         </p>
                                         <p className="text-sm sm:hidden text-white/90 line-clamp-3">{slide.text}</p>
                                         <button
-                                            className={`${commonButtonStyle} flex items-center gap-x-2 text-sm sm:text-base w-36 sm:w-48 justify-center sm:justify-start`}
+                                            className={`${commonButtonStyle} flex items-center gap-x-2 text-sm sm:text-base w-36 sm:w-48 justify-center sm:justify-start cursor-pointer`}
                                         >
                                             Learn More
                                             <IoArrowForwardOutline className="w-4 h-4 sm:w-5 sm:h-5" />
