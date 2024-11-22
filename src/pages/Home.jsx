@@ -96,7 +96,7 @@ const Home = () => {
                                 to="contact-section"
                                 smooth={true}
                                 duration={500}
-                                className="p-3 sm:p-4 text-center bg-[#191970] text-white hover:bg-[#4338CA] transition-colors"
+                                className="p-3 sm:p-4 text-center bg-[#191970] text-white hover:bg-[#4338CA] transition-colors cursor-pointer"
                                 onClick={() => setMenuOpen(false)}
                             >
                                 Contact Us
@@ -137,7 +137,12 @@ const Home = () => {
                                                 <a href="#" className="hover:text-gray-200 transition-colors">
                                                     Remote Login
                                                 </a>
-                                                <Link to="contact-section" smooth={true} duration={500} className={commonButtonStyle}>
+                                                <Link
+                                                    to="contact-section"
+                                                    smooth={true}
+                                                    duration={500}
+                                                    className={`${commonButtonStyle} cursor-pointer`}
+                                                >
                                                     Contact Us
                                                 </Link>
                                             </div>
@@ -178,15 +183,11 @@ const Home = () => {
                                             {slide.title}
                                         </h1>
                                         {slide.subtitle && (
-                                            <p
-                                                className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-white font-semibold leading-snug sm:leading-snug"
-                                            >
+                                            <p className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-white font-semibold leading-snug sm:leading-snug">
                                                 {slide.subtitle}
                                             </p>
                                         )}
-                                        <p
-                                            className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed hidden sm:block"
-                                        >
+                                        <p className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed hidden sm:block">
                                             {slide.text}
                                         </p>
                                         <p className="text-sm sm:hidden text-white/90 line-clamp-3">{slide.text}</p>
