@@ -1,6 +1,6 @@
 
 
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { MdOutlineKeyboardArrowRight, MdOutlineArrowRight } from "react-icons/md";
 import { TbPlayerPauseFilled } from "react-icons/tb";
@@ -9,11 +9,6 @@ import { GoDotFill, GoDot } from "react-icons/go";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 // Import all images
-import hero1 from "../assets/hero1.png";
-import hero2 from "../assets/hero2.png";
-import hero3 from "../assets/hero3.png";
-import hero4 from "../assets/hero4.png";
-import hero5 from "../assets/hero5.jpg";
 import gzi from "../assets/gzi.png";
 import recruiters from "../assets/recruiters.png";
 import onf from "../assets/ONF.jpg";
@@ -258,7 +253,29 @@ const Home = () => {
                             <div className="space-y-6">
                                 <div>
                                     <p className="text-blue-950 text-lg font-light">GET IN TOUCH</p>
-                                    <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold mt-2">We'd love to hear from you</h2>
+                                    <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold mt-2">
+                                        We'd{" "}
+                                        <span className="relative inline-flex items-center">
+                                            Love
+                                            <svg
+                                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[104px] h-[62px] sm:w-[124px] sm:h-[72px] pointer-events-none"
+                                                viewBox="0 0 104 62"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    d="M69.1288 5.70014C48.6573 -5.73423 25.231 1.4829 16.6215 7.00444C4.80204 14.5694 1.01812 21.6126 1.2307 31.6122C1.52831 45.6987 12.3274 55.0897 31.5446 59.3069C45.6174 62.3938 76.6541 62.5677 89.6852 55.6983C103.375 48.4812 111.857 30.6558 96.8704 13.0042C82.2449 -4.25603 38.1771 -2.73434 26.8891 6.87401"
+                                                    stroke="currentColor"
+                                                    strokeWidth="1.5"
+                                                    strokeDasharray="24,24"
+                                                    strokeLinecap="round"
+                                                    strokeDashoffset="4"
+                                                    className="text-primary"
+                                                />
+                                            </svg>
+                                        </span>{" "}
+                                        to Hear From You.
+                                    </h2>
                                 </div>
                                 <p className="text-gray-700 text-lg">
                                     Have a question? Interested in partnering with us? Let's get the conversation started! Tell us a bit about how we
@@ -328,7 +345,7 @@ const TestimonialCard = ({ role, quote, showPause, showArrows }) => (
 
 const SliderControls = ({ prevSlide, nextSlide, currentSlide, totalSlides, goToSlide }) => (
     <>
-        <button
+        {/* <button
             onClick={prevSlide}
             className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/50 hover:bg-white/70 p-3 rounded-full z-50 transition-colors"
         >
@@ -339,7 +356,7 @@ const SliderControls = ({ prevSlide, nextSlide, currentSlide, totalSlides, goToS
             className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/50 hover:bg-white/70 p-3 rounded-full z-50 transition-colors"
         >
             <FaChevronRight className="w-4 h-4" />
-        </button>
+        </button> */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-x-2 z-50">
             {[...Array(totalSlides)].map((_, index) => (
                 <button key={index} onClick={() => goToSlide(index)} className="focus:outline-none">
