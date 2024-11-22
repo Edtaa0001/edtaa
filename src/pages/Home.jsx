@@ -105,7 +105,7 @@ const Home = () => {
                             <div className="hidden lg:block absolute inset-x-0 top-0 z-50 text-white">
                                 <div className="container mx-auto px-6 py-4">
                                     <div className="flex justify-between items-center">
-                                        <img src={logo} alt="Logo" className="h-12 w-auto" />
+                                        <img src={logo} alt="Logo" className="h-24 w-auto" />
                                         <div className="space-y-4">
                                             <div className="flex items-center gap-x-6 justify-end text-sm">
                                                 <a href="#" className="hover:text-gray-200 transition-colors">
