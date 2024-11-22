@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 
@@ -140,7 +140,7 @@ const ContactForm = () => {
             <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto px-6 py-3 rounded-md text-white bg-[#191970] hover:bg-[#131358] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full md:w-auto px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] transition-colors text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {isSubmitting ? (
                     <span className="flex items-center justify-center">
@@ -167,7 +167,7 @@ const ContactForm = () => {
             {/* Status Messages */}
             {submitStatus === "success" && (
                 <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded relative" role="alert">
-                    <p>Message sent successfully! We'll get back to you soon.</p>
+                    <p>Message sent successfully! We&apos;ll get back to you soon.</p>
                 </div>
             )}
             {submitStatus === "error" && (

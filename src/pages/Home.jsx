@@ -1,14 +1,11 @@
-
-
 import { useState, useEffect, useRef } from "react";
 import { MdOutlineKeyboardArrowRight, MdOutlineArrowRight } from "react-icons/md";
-import { TbPlayerPauseFilled } from "react-icons/tb";
-import { IoArrowBackSharp, IoArrowForwardOutline } from "react-icons/io5";
-import { GoDotFill, GoDot } from "react-icons/go";
+import { TbPlayerPauseFilled, TbPlayerPlayFilled } from "react-icons/tb";
+import { IoArrowForwardOutline } from "react-icons/io5";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-scroll";
-// Import all images
+// Import all images (keeping existing imports)
 import gzi from "../assets/gzi.png";
 import recruiters from "../assets/recruiters.png";
 import onf from "../assets/ONF.jpg";
@@ -20,6 +17,7 @@ import getintouch from "../assets/getintouch.jpg";
 import Footer from "../components/Footer";
 import ResourceDropDown from "../components/ResourceDropDown";
 import ContactForm from "../components/ContactForm";
+import TestimonialsSection from "../components/Testimonials";
 import { slides } from "../components/slides";
 import { solutionCards } from "../components/solutionCards";
 
@@ -27,7 +25,11 @@ const Home = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [menuOpen, setMenuOpen] = useState(false);
     const [isResourceHovered, setIsResourceHovered] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const resourceDropdownRef = useRef(null);
+
+    // Common button style for consistency
+    const commonButtonStyle = "bg-[#4F46E5] hover:bg-[#4338CA] transition-colors text-white px-6 py-3 rounded-lg";
 
     const handleResourceMouseEnter = () => {
         setIsResourceHovered(true);
@@ -41,21 +43,23 @@ const Home = () => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
     };
 
-    const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-    };
-
     const goToSlide = (index) => {
         setCurrentSlide(index);
     };
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            nextSlide();
-        }, 3000);
+    const togglePlayPause = () => {
+        setIsPlaying(!isPlaying);
+    };
 
+    useEffect(() => {
+        let timer;
+        if (isPlaying) {
+            timer = setInterval(() => {
+                nextSlide();
+            }, 3000);
+        }
         return () => clearInterval(timer);
-    }, [currentSlide]);
+    }, [currentSlide, isPlaying]);
 
     return (
         <div className="min-h-screen font-poppins">
@@ -68,22 +72,33 @@ const Home = () => {
                     </button>
                 </div>
                 {menuOpen && (
-                    <nav className="mt-4 animate-slideDown">
-                        <a href="#" className="block py-3 px-4 hover:bg-gray-50 transition-colors text-blue-950">
-                            ABOUT US
-                        </a>
-                        <a href="#" className="block py-3 px-4 hover:bg-gray-50 transition-colors text-blue-950">
-                            SAP
-                        </a>
-                        <a href="#" className="block py-3 px-4 hover:bg-gray-50 transition-colors text-blue-950">
-                            MICROSOFT
-                        </a>
-                        <a href="#" className="block py-3 px-4 hover:bg-gray-50 transition-colors text-blue-950">
-                            RESOURCES
-                        </a>
-                        <a href="#" className="block py-3 px-4 hover:bg-gray-50 transition-colors text-blue-950">
-                            CAREER
-                        </a>
+                    <nav className="mt-4 bg-white absolute w-full left-0 shadow-lg animate-slideDown">
+                        <div className="flex flex-col divide-y">
+                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                                ABOUT US
+                            </a>
+                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                                SAP
+                            </a>
+                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                                MICROSOFT
+                            </a>
+                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                                RESOURCES
+                            </a>
+                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                                CAREER
+                            </a>
+                            <Link
+                                to="contact-section"
+                                smooth={true}
+                                duration={500}
+                                className="p-4 text-center bg-[#4F46E5] text-white hover:bg-[#4338CA] transition-colors"
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                Contact Us
+                            </Link>
+                        </div>
                     </nav>
                 )}
             </header>
@@ -119,12 +134,7 @@ const Home = () => {
                                                 <a href="#" className="hover:text-gray-200 transition-colors">
                                                     Remote Login
                                                 </a>
-                                                <Link
-                                                    to="contact-section"
-                                                    smooth={true}
-                                                    duration={500}
-                                                    className="bg-[#191970] hover:bg-[#131358] transition-colors px-6 py-3 rounded-md cursor-pointer"
-                                                >
+                                                <Link to="contact-section" smooth={true} duration={500} className={commonButtonStyle}>
                                                     Contact Us
                                                 </Link>
                                             </div>
@@ -163,8 +173,8 @@ const Home = () => {
                                             <p className="text-xl md:text-3xl lg:text-4xl text-white font-semibold">{slide.subtitle}</p>
                                         )}
                                         <p className="text-lg md:text-xl text-white/90">{slide.text}</p>
-                                        <button className="bg-[#191970] hover:bg-[#131358] transition-colors rounded-lg flex items-center gap-x-2 text-white px-6 py-3 text-sm md:text-base font-medium">
-                                            {slide.button}
+                                        <button className={`${commonButtonStyle} flex items-center gap-x-2 w-48`}>
+                                            Learn More
                                             <IoArrowForwardOutline className="w-5 h-5" />
                                         </button>
                                     </div>
@@ -173,14 +183,27 @@ const Home = () => {
                         </div>
                     ))}
 
-                    {/* Slider Controls */}
-                    <SliderControls
-                        prevSlide={prevSlide}
-                        nextSlide={nextSlide}
-                        currentSlide={currentSlide}
-                        totalSlides={slides.length}
-                        goToSlide={goToSlide}
-                    />
+                    {/* Updated Slider Controls */}
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-x-6 z-50">
+                        <button onClick={togglePlayPause} className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors">
+                            {isPlaying ? (
+                                <TbPlayerPauseFilled className="w-6 h-6 text-white" />
+                            ) : (
+                                <TbPlayerPlayFilled className="w-6 h-6 text-white" />
+                            )}
+                        </button>
+                        <div className="flex gap-x-3">
+                            {slides.map((_, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => goToSlide(index)}
+                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                                        index === currentSlide ? "bg-white w-6" : "bg-white/50 hover:bg-white/70"
+                                    }`}
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </section>
 
                 {/* Solutions Section */}
@@ -213,38 +236,7 @@ const Home = () => {
                 </section>
 
                 {/* Testimonials Section */}
-                <section className="bg-black py-16 md:py-24">
-                    <div className="container mx-auto px-6">
-                        <h2 className="text-center text-white font-semibold text-3xl mb-16">What our Customers say</h2>
-                        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                            <TestimonialCard
-                                role="Head Manager, Skyline Systems"
-                                quote="Automation has never been easier. EDTAA's only IAUTO have made our processes so much smoother and efficient."
-                                showPause
-                            />
-                            <TestimonialCard
-                                role="Department Manager, FusionCore"
-                                quote="We've always struggled migrating to the cloud, but EDTAA's Migration team made it most 30-min clarity call only. It's been a game-changer for us all at FusionCore."
-                                showArrows
-                            />
-                            <TestimonialCard
-                                role="Head Manager, Skyline Systems"
-                                quote="Automation has never been easier. EDTAA's only IAUTO have made our processes so much smoother and efficient."
-                                showPause
-                            />
-                            <TestimonialCard
-                                role="Department Manager, FusionCore"
-                                quote="We've always struggled migrating to the cloud, but EDTAA's Migration team made it most 30-min clarity call only. It's been a game-changer for us all at FusionCore."
-                                showArrows
-                            />
-                            <TestimonialCard
-                                role="IT Director, TechSphere Solutions"
-                                quote="Before working with EDTAA, our digital processes were disjointed and time-consuming. Their automation solutions completely revolutionized how we operate, saving us countless hours and improving accuracy across the board. EDTAA has become an invaluable partner in our transformation journey!"
-                                showPause
-                            />
-                        </div>
-                    </div>
-                </section>
+                <TestimonialsSection />
 
                 {/* AI Section */}
                 <section className="bg-black py-16">
@@ -255,7 +247,7 @@ const Home = () => {
                                 <p className="text-lg text-white/90">
                                     To innovate and compete, enterprises must strategically rewire the business for an AI-enabled future.
                                 </p>
-                                <button className="bg-[#191970] hover:bg-[#131358] text-white flex items-center gap-x-2 px-6 py-3 rounded-2xl transition-colors">
+                                <button className={`${commonButtonStyle} flex items-center gap-x-2`}>
                                     Get details <MdOutlineArrowRight className="w-5 h-5" />
                                 </button>
                             </div>
@@ -274,7 +266,7 @@ const Home = () => {
                                 <div>
                                     <p className="text-blue-950 text-lg font-light">GET IN TOUCH</p>
                                     <h2 className="font-roboto-slab text-3xl md:text-4xl font-bold mt-2">
-                                        We'd{" "}
+                                        We&apos;d{" "}
                                         <span className="relative inline-flex items-center">
                                             Love
                                             <svg
@@ -298,8 +290,8 @@ const Home = () => {
                                     </h2>
                                 </div>
                                 <p className="text-gray-700 text-lg">
-                                    Have a question? Interested in partnering with us? Let's get the conversation started! Tell us a bit about how we
-                                    can help below and we'll be in touch!
+                                    Have a question? Interested in partnering with us? Let&apos;s get the conversation started! Tell us a bit about
+                                    how we can help below and we&apos;ll be in touch!
                                 </p>
                                 <ContactForm />
                             </div>
@@ -339,58 +331,6 @@ const SolutionCard = ({ title, description, linkText }) => (
             <MdOutlineKeyboardArrowRight className="w-5 h-5" />
         </button>
     </div>
-);
-
-const TestimonialCard = ({ role, quote, showPause, showArrows }) => (
-    <div className="space-y-6">
-        <p className="text-lg text-gray-300">{role}</p>
-        <p className="font-roboto-slab text-2xl md:text-3xl text-white">{quote}</p>
-        {showPause && (
-            <div className="bg-gray-600 flex justify-center items-center w-[35px] h-[35px]">
-                <TbPlayerPauseFilled className="w-6 h-6 text-white" />
-            </div>
-        )}
-        {showArrows && (
-            <div className="flex gap-x-2">
-                <button className="bg-gray-600 flex justify-center items-center w-[35px] h-[35px]">
-                    <IoArrowBackSharp className="w-6 h-6 text-white" />
-                </button>
-                <button className="bg-gray-600 flex justify-center items-center w-[35px] h-[35px]">
-                    <IoArrowForwardOutline className="w-6 h-6 text-white" />
-                </button>
-            </div>
-        )}
-    </div>
-);
-
-const SliderControls = ({ prevSlide, nextSlide, currentSlide, totalSlides, goToSlide }) => (
-    <>
-        {/* <button
-            onClick={prevSlide}
-            className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/50 hover:bg-white/70 p-3 rounded-full z-50 transition-colors"
-        >
-            <FaChevronLeft className="w-4 h-4" />
-        </button>
-        <button
-            onClick={nextSlide}
-            className="absolute top-1/2 right-4 -translate-y-1/2 bg-white/50 hover:bg-white/70 p-3 rounded-full z-50 transition-colors"
-        >
-            <FaChevronRight className="w-4 h-4" />
-        </button> */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-x-3 z-50">
-        {[...Array(totalSlides)].map((_, index) => (
-            <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentSlide 
-                        ? "bg-white w-6" 
-                        : "bg-white/50 hover:bg-white/70"
-                }`}
-            />
-        ))}
-    </div>
-    </>
 );
 
 export default Home;

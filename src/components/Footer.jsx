@@ -1,4 +1,3 @@
-import React from "react";
 import footerlogo from "../assets/logoo.png";
 import headset from "../assets/headset.png";
 import email from "../assets/email.png";
@@ -60,8 +59,8 @@ const Footer = () => {
         { text: "Copyright" },
         { text: "Trademark" },
         { text: "Sitemap" },
-        { text: "Text View", underline: true },
-        { text: "Cookie Preference", underline: true },
+        { text: "Text View" },
+        { text: "Cookie Preference" },
     ];
 
     return (
