@@ -66,7 +66,7 @@ const Home = () => {
             {/* Mobile Header */}
             <header className="lg:hidden bg-white shadow-md p-4 fixed top-0 w-full z-50">
                 <div className="flex justify-between items-center">
-                    <img src={logo} alt="Logo" className="h-8 w-auto" />
+                    <img src={logo} alt="Logo" className="h-12 w-auto" />
                     <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl text-blue-950 hover:text-blue-800 transition-colors">
                         <RxHamburgerMenu />
                     </button>
