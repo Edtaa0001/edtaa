@@ -56,7 +56,7 @@ const Home = () => {
         if (isPlaying) {
             timer = setInterval(() => {
                 nextSlide();
-            }, 3000);
+            }, 8000);
         }
         return () => clearInterval(timer);
     }, [currentSlide, isPlaying]);
@@ -66,7 +66,7 @@ const Home = () => {
             {/* Mobile Header */}
             <header className="lg:hidden bg-white shadow-md p-3 sm:p-4 fixed top-0 w-full z-50">
                 <div className="flex justify-between items-center">
-                    <img src={logo} alt="Logo" className="h-12 sm:h-16 w-auto" />
+                    <img src={logo} alt="Logo" className="h-8 sm:h-12 w-auto" />
                     <button
                         onClick={() => setMenuOpen(!menuOpen)}
                         className="text-xl sm:text-2xl text-blue-950 hover:text-blue-800 transition-colors p-1"
@@ -112,7 +112,7 @@ const Home = () => {
                     {slides.map((slide, index) => (
                         <div
                             key={index}
-                            className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
+                            className={`absolute inset-0 transition-opacity duration-800 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
                             style={{
                                 backgroundImage: `url(${slide.image})`,
                                 backgroundSize: "cover",
@@ -123,7 +123,7 @@ const Home = () => {
                             <div className="hidden lg:block absolute inset-x-0 top-0 z-50 text-white">
                                 <div className="container mx-auto px-6 py-4">
                                     <div className="flex justify-between items-center">
-                                        <img src={logo} alt="Logo" className="h-24 w-auto" />
+                                        <img src={logo} alt="Logo" className="h-16 w-auto" />
                                         <div className="space-y-4">
                                             <div className="flex items-center gap-x-6 justify-end text-sm">
                                                 <a href="#" className="hover:text-gray-200 transition-colors">

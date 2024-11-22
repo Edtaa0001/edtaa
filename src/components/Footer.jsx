@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
                     {/* Company Info Column */}
                     <div className="lg:col-span-1">
-                        <img src={footerlogo} alt="EDTAA Logo" className="h-24 w-auto object-contain mb-6" />
+                        <img src={footerlogo} alt="EDTAA Logo" className="h-12 w-auto object-contain mb-6" />
 
                         {/* Contact Information */}
                         <div className="space-y-6">
