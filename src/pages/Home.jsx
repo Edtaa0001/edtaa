@@ -64,36 +64,39 @@ const Home = () => {
     return (
         <div className="min-h-screen font-poppins">
             {/* Mobile Header */}
-            <header className="lg:hidden bg-white shadow-md p-4 fixed top-0 w-full z-50">
+            <header className="lg:hidden bg-white shadow-md p-3 sm:p-4 fixed top-0 w-full z-50">
                 <div className="flex justify-between items-center">
-                    <img src={logo} alt="Logo" className="h-12 w-auto" />
-                    <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl text-blue-950 hover:text-blue-800 transition-colors">
+                    <img src={logo} alt="Logo" className="h-12 sm:h-16 w-auto" />
+                    <button
+                        onClick={() => setMenuOpen(!menuOpen)}
+                        className="text-xl sm:text-2xl text-blue-950 hover:text-blue-800 transition-colors p-1"
+                    >
                         <RxHamburgerMenu />
                     </button>
                 </div>
                 {menuOpen && (
-                    <nav className="mt-4 bg-white absolute w-full left-0 shadow-lg animate-slideDown">
+                    <nav className="mt-3 sm:mt-4 bg-white absolute w-full left-0 shadow-lg animate-slideDown">
                         <div className="flex flex-col divide-y">
-                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                            <a href="#" className="p-3 sm:p-4 hover:bg-gray-50 transition-colors text-blue-950">
                                 ABOUT US
                             </a>
-                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                            <a href="#" className="p-3 sm:p-4 hover:bg-gray-50 transition-colors text-blue-950">
                                 SAP
                             </a>
-                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                            <a href="#" className="p-3 sm:p-4 hover:bg-gray-50 transition-colors text-blue-950">
                                 MICROSOFT
                             </a>
-                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                            <a href="#" className="p-3 sm:p-4 hover:bg-gray-50 transition-colors text-blue-950">
                                 RESOURCES
                             </a>
-                            <a href="#" className="p-4 hover:bg-gray-50 transition-colors text-blue-950">
+                            <a href="#" className="p-3 sm:p-4 hover:bg-gray-50 transition-colors text-blue-950">
                                 CAREER
                             </a>
                             <Link
                                 to="contact-section"
                                 smooth={true}
                                 duration={500}
-                                className="p-4 text-center bg-[#4F46E5] text-white hover:bg-[#4338CA] transition-colors"
+                                className="p-3 sm:p-4 text-center bg-[#191970] text-white hover:bg-[#4338CA] transition-colors"
                                 onClick={() => setMenuOpen(false)}
                             >
                                 Contact Us
@@ -105,7 +108,7 @@ const Home = () => {
 
             <main className="pt-16 lg:pt-0">
                 {/* Hero Section */}
-                <section className="relative h-[60vh] md:h-[80vh] lg:h-[90vh]">
+                <section className="relative h-[70vh] sm:h-[75vh] md:h-[80vh] lg:h-[90vh]">
                     {slides.map((slide, index) => (
                         <div
                             key={index}
@@ -166,16 +169,32 @@ const Home = () => {
 
                             {/* Hero Content */}
                             <div className="absolute inset-0 bg-black/50 flex items-center">
-                                <div className="container mx-auto px-6">
-                                    <div className="max-w-3xl space-y-6">
-                                        <h1 className="font-roboto-slab text-3xl md:text-5xl lg:text-6xl text-white font-bold">{slide.title}</h1>
+                                <div className="container mx-auto px-4 sm:px-6">
+                                    <div className="max-w-3xl space-y-4 sm:space-y-6">
+                                        <h1
+                                            className="font-roboto-slab text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-white font-bold 
+                            leading-tight sm:leading-tight tracking-tight"
+                                        >
+                                            {slide.title}
+                                        </h1>
                                         {slide.subtitle && (
-                                            <p className="text-xl md:text-3xl lg:text-4xl text-white font-semibold">{slide.subtitle}</p>
+                                            <p
+                                                className="text-lg sm:text-xl md:text-3xl lg:text-4xl text-white font-semibold leading-snug sm:leading-snug"
+                                            >
+                                                {slide.subtitle}
+                                            </p>
                                         )}
-                                        <p className="text-lg md:text-xl text-white/90">{slide.text}</p>
-                                        <button className={`${commonButtonStyle} flex items-center gap-x-2 w-48`}>
+                                        <p
+                                            className="text-base sm:text-lg md:text-xl text-white/90 max-w-xl leading-relaxed hidden sm:block"
+                                        >
+                                            {slide.text}
+                                        </p>
+                                        <p className="text-sm sm:hidden text-white/90 line-clamp-3">{slide.text}</p>
+                                        <button
+                                            className={`${commonButtonStyle} flex items-center gap-x-2 text-sm sm:text-base w-36 sm:w-48 justify-center sm:justify-start`}
+                                        >
                                             Learn More
-                                            <IoArrowForwardOutline className="w-5 h-5" />
+                                            <IoArrowForwardOutline className="w-4 h-4 sm:w-5 sm:h-5" />
                                         </button>
                                     </div>
                                 </div>
@@ -183,23 +202,26 @@ const Home = () => {
                         </div>
                     ))}
 
-                    {/* Updated Slider Controls */}
-                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-x-6 z-50">
-                        <button onClick={togglePlayPause} className="bg-white/20 p-2 rounded-full hover:bg-white/30 transition-colors">
+                    {/* Updated Slider Controls for better mobile experience */}
+                    <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col sm:flex-row items-center gap-y-3 sm:gap-x-6 z-50">
+                        <button onClick={togglePlayPause} className="bg-white/20 p-1.5 sm:p-2 rounded-full hover:bg-white/30 transition-colors">
                             {isPlaying ? (
-                                <TbPlayerPauseFilled className="w-6 h-6 text-white" />
+                                <TbPlayerPauseFilled className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             ) : (
-                                <TbPlayerPlayFilled className="w-6 h-6 text-white" />
+                                <TbPlayerPlayFilled className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                             )}
                         </button>
-                        <div className="flex gap-x-3">
+                        <div className="flex gap-x-2 sm:gap-x-3">
                             {slides.map((_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => goToSlide(index)}
-                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                                        index === currentSlide ? "bg-white w-6" : "bg-white/50 hover:bg-white/70"
+                                    className={`transition-all duration-300 ${
+                                        index === currentSlide
+                                            ? "w-5 sm:w-6 h-2 sm:h-3 bg-white rounded-full"
+                                            : "w-2 sm:w-3 h-2 sm:h-3 bg-white/50 hover:bg-white/70 rounded-full"
                                     }`}
+                                    aria-label={`Go to slide ${index + 1}`}
                                 />
                             ))}
                         </div>
