@@ -112,7 +112,7 @@ const Home = () => {
                     {slides.map((slide, index) => (
                         <div
                             key={index}
-                            className={'absolute inset-0 transition-opacity duration-500 opacity-100'}
+                            className={`absolute inset-0 transition-opacity duration-500 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}
                             style={{
                                 backgroundImage: `url(${slide.image})`,
                                 backgroundSize: "cover",
