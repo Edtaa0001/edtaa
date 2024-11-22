@@ -27,7 +27,7 @@ const ContactForm = () => {
                     phone_number: data.phone,
                     message: data.message,
                     submission_date: new Date().toLocaleString(),
-                    company_logo: "https://res.cloudinary.com/drc6omjqc/image/upload/v1732225335/logo2_phf0n5.png", // Add your logo URL
+                    company_logo: "https://res.cloudinary.com/drc6omjqc/image/upload/v1732300705/logoo_mmgw3s.png", // Add your logo URL
                 },
                 "3Mm_nXmdn_ubECxQw"
             );
