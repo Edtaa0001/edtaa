@@ -1,5 +1,5 @@
 import React from "react";
-import footerlogo from "../assets/footerlogo.png";
+import footerlogo from "../assets/footerlogoo.png";
 import headset from "../assets/headset.png";
 import email from "../assets/email.png";
 import chat from "../assets/chat.png";

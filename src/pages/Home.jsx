@@ -13,7 +13,7 @@ import gzi from "../assets/gzi.png";
 import recruiters from "../assets/recruiters.png";
 import onf from "../assets/ONF.jpg";
 import dawn from "../assets/dawn.png";
-import logo from "../assets/logo.png";
+import logo from "../assets/logoo.png";
 import rewiring from "../assets/shakinghands.png";
 import getintouch from "../assets/getintouch.jpg";
 // Import components
