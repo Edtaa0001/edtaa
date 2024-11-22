@@ -29,7 +29,7 @@ const Home = () => {
     const resourceDropdownRef = useRef(null);
 
     // Common button style for consistency
-    const commonButtonStyle = "bg-[#4F46E5] hover:bg-[#4338CA] transition-colors text-white px-6 py-3 rounded-lg";
+    const commonButtonStyle = "bg-[#191970] hover:bg-[#4338CA] transition-colors text-white px-6 py-3 rounded-lg";
 
     const handleResourceMouseEnter = () => {
         setIsResourceHovered(true);

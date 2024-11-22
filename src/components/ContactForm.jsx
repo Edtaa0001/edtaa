@@ -140,7 +140,7 @@ const ContactForm = () => {
             <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] transition-colors text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full md:w-auto px-6 py-3 bg-[#191970] hover:bg-[#4338CA] transition-colors text-white rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
                 {isSubmitting ? (
                     <span className="flex items-center justify-center">
